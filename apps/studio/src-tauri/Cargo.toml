@@ -1,0 +1,18 @@
+[package]
+name = "creator-nexus"
+version = "0.1.0"
+description = "Creator Nexus desktop and mobile shell"
+authors = ["Creator Nexus contributors"]
+edition = "2021"
+
+[lib]
+name = "creator_nexus_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.1", features = [] }
+
+[dependencies]
+tauri = { version = "2.11.1", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -1,0 +1,19 @@
+{
+  "id": "vertical-short-v1",
+  "name": "Vertical Short — Approval First",
+  "version": "1.0.0",
+  "policy": {
+    "irreversibleActionsAlwaysRequireApproval": true,
+    "defaultConfidenceThreshold": 0.8,
+    "neverAutoPublish": true
+  },
+  "stages": [
+    "brief",
+    "research",
+    "script",
+    "storyboard",
+    "render",
+    "qa",
+    "publish"
+  ]
+}
