@@ -1,7 +1,10 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "integrations": [
     {"id":"ollama","repo":"https://github.com/ollama/ollama.git","license":"MIT","mode":"external-process","capabilities":["llm.local","planning","script","vision.optional"]},
+    {"id":"gemini-cli","repo":"https://github.com/google-gemini/gemini-cli.git","license":"Apache-2.0","mode":"external-cli","capabilities":["llm.text","research.web","browser.assist","mcp.client"]},
+    {"id":"playwright-mcp","repo":"https://github.com/microsoft/playwright-mcp.git","license":"Apache-2.0","mode":"external-mcp-browser","capabilities":["browser.navigate","browser.extract","browser.upload","browser.download","browser.capture"]},
+    {"id":"browser-use","repo":"https://github.com/browser-use/browser-use.git","license":"MIT","mode":"optional-browser-agent","capabilities":["browser.navigate","browser.extract","browser.agent"]},
     {"id":"comfyui","repo":"https://github.com/Comfy-Org/ComfyUI.git","license":"GPL-3.0","mode":"external-service","capabilities":["image.generate","image.edit","video.generate","video.inpaint","video.extend"]},
     {"id":"wan2.1","repo":"https://github.com/Wan-Video/Wan2.1.git","license":"Apache-2.0","mode":"model-engine","capabilities":["video.text-to-video","video.image-to-video","video.edit"]},
     {"id":"diffusers","repo":"https://github.com/huggingface/diffusers.git","license":"Apache-2.0","mode":"library","capabilities":["image.generate","image.edit","video.generate"]},

@@ -1,0 +1,19 @@
+{
+  "policy": {
+    "apiFirst": true,
+    "localFirst": true,
+    "browserFallback": true,
+    "reuseAuthorizedBrowserProfile": true,
+    "neverBypassAccessControls": true,
+    "destructiveActionsRequireApproval": true
+  },
+  "backends": [
+    {"id":"playwright-mcp","kind":"mcp","command":"npx","args":["@playwright/mcp@latest","--port","8931"],"url":"http://127.0.0.1:8931/sse"},
+    {"id":"browser-use","kind":"local-agent","optional":true}
+  ],
+  "webApps": [
+    {"id":"gemini-web","url":"https://gemini.google.com/","loginRequired":true},
+    {"id":"youtube-web","url":"https://www.youtube.com/","loginRequired":false},
+    {"id":"huggingface-web","url":"https://huggingface.co/","loginRequired":false}
+  ]
+}

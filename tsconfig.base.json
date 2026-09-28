@@ -12,12 +12,13 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@creator-nexus/core": [
-        "packages/core/src/index.ts"
-      ],
-      "@creator-nexus/adapters": [
-        "packages/adapters/src/index.ts"
-      ]
+      "@creator-nexus/core": ["packages/core/src/index.ts"],
+      "@creator-nexus/adapters": ["packages/adapters/src/index.ts"],
+      "@mind-z/runtime": ["packages/runtime/src/index.ts"],
+      "@mind-z/mcp": ["packages/mcp/src/index.ts"],
+      "@mind-z/browser": ["packages/browser/src/index.ts"],
+      "@mind-z/virality": ["packages/virality/src/index.ts"],
+      "@mind-z/publishing": ["packages/publishing/src/index.ts"]
     }
   }
 }
