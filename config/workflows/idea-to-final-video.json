@@ -1,0 +1,27 @@
+{
+  "id": "idea-to-final-video-v2",
+  "name": "Idea → Professional Final Video",
+  "version": "2.0.0",
+  "policy": {
+    "localFirst": true,
+    "paidApisOptional": true,
+    "neverAutoPublish": true,
+    "finalHumanApproval": true
+  },
+  "stages": [
+    {"id":"idea","capability":"project.idea"},
+    {"id":"strategy","capability":"llm.local"},
+    {"id":"research","capability":"research.web","approval":"confidence"},
+    {"id":"script","capability":"content.script","approval":"human"},
+    {"id":"shot-plan","capability":"video.storyboard"},
+    {"id":"images","capability":"image.generate"},
+    {"id":"video-scenes","capability":"video.generate"},
+    {"id":"narration","capability":"voice.tts"},
+    {"id":"transcript","capability":"audio.transcribe"},
+    {"id":"rough-cut","capability":"video.compose"},
+    {"id":"drift-edit","capability":"edit.professional","transport":"mcp","approval":"human"},
+    {"id":"qa","capability":"video.qa","approval":"human"},
+    {"id":"export","capability":"video.export"},
+    {"id":"publish","capability":"publish.social","approval":"human"}
+  ]
+}

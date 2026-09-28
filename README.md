@@ -1,158 +1,62 @@
-# Creator Nexus
+# MIND-Z Tool — Open Creator Operating System
 
-**Creator Nexus** is a cross-platform, human-in-the-loop content production operating system. It is designed for creators and small teams that want AI to execute the repetitive work while keeping **explicit human approval** at editorial, brand, legal/safety and publishing checkpoints.
+MIND-Z is being built as a local-first, human-in-the-loop content production system: give it an idea and it orchestrates planning, script, images, video, narration, captions, assembly and professional finishing.
 
-The repository is intentionally built as an **original implementation** with clean provider contracts. It does not vendor or copy the source code of the reference projects listed below.
+## v0.2 direction
 
-## What makes it different
+The core principle is open-source-first. Paid APIs are optional fallbacks, not requirements.
 
-- **Approval-first orchestration** — workflows stop at configured human gates; high/critical risk steps are never silently auto-approved.
-- **Confidence-aware automation** — low-confidence outputs escalate to review instead of being treated as certain.
-- **Provider mesh** — AI models, decision engines, renderers, clippers and publishing services are interchangeable adapters.
-- **Local-first foundation** — the app works as a local UI and can point at local or remote OpenAI-compatible endpoints.
-- **Cross-platform shell** — React/Vite for web/PWA plus Tauri 2 for Windows, macOS, Linux and mobile targets.
-- **Creator pipeline** — brief → research → script → storyboard → render → QA → publish.
-- **No automatic publication by default** — irreversible external actions are approval gated.
+Production chain:
 
-## Current runnable scope
+1. Ollama — local planning, reasoning and script.
+2. ComfyUI + Wan2.1 — image/video generation and visual workflows.
+3. Kokoro — local narration/TTS.
+4. whisper.cpp — transcription and subtitle timing.
+5. FFmpeg — deterministic assembly and media processing.
+6. Drift — professional final edit controlled by MIND-Z through MCP.
+7. MIND-Z — orchestration, approvals, routing, QA, memory and delivery.
 
-The included application is a functional product foundation rather than a fake screenshot. The demo workflow executes real state transitions, dependency checks, confidence thresholds and approval/rejection actions. Provider adapters are included as integration contracts; external services require your own credentials and endpoint configuration.
+## Why this repository does not copy every upstream project
 
-## Repository layout
+Large external engines are intentionally kept as separate processes/services. This avoids fragile forks, allows independent updates, and preserves clear license boundaries (especially GPL projects such as ComfyUI and Drift). MIND-Z owns the orchestration and integration layer.
 
-```text
-creator-nexus/
-├── apps/
-│   └── studio/                 React/Vite UI + Tauri 2 shell
-├── packages/
-│   ├── core/                   workflow engine, approval policy, domain types
-│   └── adapters/               OpenAI-compatible, TypeSafe-style and media HTTP adapters
-├── config/workflows/           portable workflow definitions
-├── docs/                       architecture, security and build documentation
-├── scripts/                    smoke checks
-└── .github/workflows/          CI + multi-platform release builds
-```
+Install supported integration source trees for development:
 
-## Quick start — web
+    npm run integrations:install
 
-Requirements: Node.js 22+.
+They are cloned into the ignored `.integrations/` directory and are not vendored into MIND-Z history.
 
-```bash
-npm install
-npm run dev
-```
+## Workflow
 
-Open `http://localhost:1420`.
+The target workflow is defined in `config/workflows/idea-to-final-video.json`:
 
-Build and validate:
+Idea -> Strategy -> Research -> Script -> Storyboard -> Images -> Video scenes -> Narration -> Transcript -> Rough cut -> Drift MCP edit -> QA -> Export -> Publish.
 
-```bash
-npm run typecheck
-npm run build
-npm test
-```
+Human approval remains mandatory before sensitive/final stages.
 
-## Desktop app
+## Current implemented integration code
 
-Install Rust and the Tauri prerequisites for your operating system, then:
+- OpenAI-compatible routing adapter
+- TypeSafe-style decision adapter
+- Ollama local LLM adapter
+- ComfyUI HTTP client
+- Drift MCP HTTP client
+- Generic media-job adapter
+- approval-aware workflow engine
+- cross-platform React/Tauri studio shell
+- GitHub CI and installer build matrix
 
-```bash
-npm install
-npm run tauri -- dev
-```
+## Repository structure
 
-Windows installer:
+- `apps/studio` — user interface + Tauri shell
+- `packages/core` — workflow/state/policy
+- `packages/adapters` — engine/API/MCP adapters
+- `integrations/catalog.json` — external open-source engine catalog
+- `config/workflows` — production workflows
+- `docs` — architecture, security and build docs
 
-```bash
-npm run tauri -- build --bundles nsis
-```
+See `docs/ARCHITECTURE_V2.md` and `docs/OPEN_SOURCE_STACK.md`.
 
-The GitHub Actions release workflow builds the Windows installer on a native Windows runner.
+## Important license boundary
 
-## Android
-
-Tauri mobile requires Android Studio/SDK, Java and Rust Android targets. Initial local setup:
-
-```bash
-npm install
-npm run tauri -- android init
-npm run tauri -- android dev
-```
-
-For an installable test APK:
-
-```bash
-npm run tauri -- android build --debug --apk
-```
-
-The included CI job performs this on Linux with the Android SDK and uploads the generated APK artifact. For production Play Store distribution, configure a release keystore and signing secrets instead of using a debug package.
-
-## Provider strategy
-
-Creator Nexus does **not** hard-code one vendor. The default architecture supports:
-
-| Capability | Adapter direction |
-|---|---|
-| LLM routing/fallback | OpenAI-compatible gateway; suitable for OmniRoute-style routing |
-| Typed decisions/confidence | Decision provider contract; suitable for TypeSafe-style decision APIs |
-| Video/motion | HTTP media-job adapter; suitable for HyperFrames/HeyGen or self-hosted render services |
-| Clip generation | Media adapter or local worker; suitable for OpenShorts/AutoClip-style pipelines |
-| Script/media assembly | Workflow executor plugins; FFmpeg/local workers can be attached without changing the core |
-| Publishing | Webhook/provider adapter; always approval gated by default |
-
-## Safety and credentials
-
-- Never commit API keys. Use `.env` locally and secret stores in production.
-- Keep provider keys server-side or in an OS credential store for production builds.
-- Publishing, account changes, destructive actions and sensitive external writes should remain `high`/`critical` risk.
-- Treat generated factual claims as unverified until the workflow records supporting evidence.
-- The demo executors return sample outputs and are clearly separated from provider integrations.
-
-See [`docs/SECURITY.md`](docs/SECURITY.md).
-
-## Reference projects and licensing
-
-The product architecture was informed by the public behavior/documentation of the following projects/services:
-
-- OmniRoute — MIT
-- codex-chatgpt-web — MIT
-- treg — Apache-2.0 with additional hosted-service restrictions
-- HyperFrames — Apache-2.0
-- OpenShorts — MIT
-- AutoClip — MIT
-- MoneyPrinterTurbo — MIT
-- Drift — GPL-3.0
-- OpenMuse — MIT
-- ContentFlow — source-available proprietary; **no code copied or incorporated**
-- TypeSafe AI — external hosted service/API subject to its own service terms
-
-See [`THIRD_PARTY_INSPIRATION.md`](THIRD_PARTY_INSPIRATION.md) for the design boundary.
-
-## Release artifacts
-
-The release workflow is prepared to produce:
-
-- Web/PWA bundle (`dist`)
-- Windows NSIS installer (`.exe`)
-- Linux AppImage (`.AppImage`)
-- macOS disk image (`.dmg`)
-- Android test APK (`.apk`)
-
-Actual binary generation happens on GitHub-hosted runners because each native package must be built on a compatible toolchain/OS.
-
-## Roadmap
-
-1. Secure local secret vault / OS keyring bridge.
-2. Durable SQLite workflow persistence and resumable jobs.
-3. Real provider configuration UI and health checks.
-4. Browser/research worker with source provenance.
-5. Media worker pool (FFmpeg, Whisper, face tracking, captions).
-6. Brand kit, reusable prompt blocks and template marketplace.
-7. Multi-channel content calendar and analytics ingestion.
-8. Collaboration, role-based approvals and audit logs.
-9. Signed production installers and auto-update channels.
-10. Plugin SDK with explicit permission manifests and sandboxing.
-
-## License
-
-Creator Nexus itself is MIT licensed. Third-party services, APIs and any independently installed plugins retain their own licenses and terms.
+MIND-Z itself remains MIT. GPL software is not copied into the MIND-Z codebase; it is treated as an independently executed tool and accessed over documented process/API/MCP boundaries. Model weights can have separate licenses from the software hosting them and must be reviewed before commercial distribution.

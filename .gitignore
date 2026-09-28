@@ -6,3 +6,8 @@ dist/
 apps/studio/src-tauri/target/
 apps/studio/src-tauri/gen/
 coverage/
+.integrations/
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

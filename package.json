@@ -1,20 +1,18 @@
 {
-  "name": "creator-nexus",
+  "name": "mind-z-tool",
   "private": true,
-  "version": "0.1.0",
-  "description": "Human-in-the-loop AI content creation studio for web, desktop and mobile.",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "version": "0.2.0",
+  "description": "Open-source-first creator operating system: idea to professional video with MCP-controlled finishing.",
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev": "npm run dev -w @creator-nexus/studio",
-    "build": "npm run build -w @creator-nexus/core && npm run build -w @creator-nexus/adapters && npm run build -w @creator-nexus/studio",
+    "dev:gateway": "npm run dev -w @mind-z/gateway",
+    "build": "npm run build -ws --if-present",
     "typecheck": "npm run typecheck -ws --if-present",
     "test": "node scripts/smoke-test.mjs",
+    "integrations:install": "node scripts/install-integrations.mjs",
+    "integrations:status": "node scripts/integration-status.mjs",
     "tauri": "npm run tauri -w @creator-nexus/studio"
   },
-  "engines": {
-    "node": ">=22"
-  }
+  "engines": {"node":">=22"}
 }
