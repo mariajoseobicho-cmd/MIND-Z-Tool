@@ -1,14 +1,15 @@
 {
   "name": "mind-z-tool",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Open-source-first creator operating system with resilient local, MCP, API and browser routing.",
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev": "npm run dev -w @creator-nexus/studio",
     "dev:gateway": "npm run dev -w @mind-z/gateway",
     "gateway": "npm run start -w @mind-z/gateway",
-    "build": "npm run build -ws --if-present",
+    "build": "npm run build -w @creator-nexus/core && npm run build -w @creator-nexus/adapters && npm run build -w @mind-z/runtime && npm run build -w @mind-z/mcp && npm run build -w @mind-z/browser && npm run build -w @mind-z/virality && npm run build -w @mind-z/publishing && npm run build -w @mind-z/gateway && npm run build -w @creator-nexus/studio",
+    "build:preview": "npm run build -w @creator-nexus/core && npm run build -w @creator-nexus/studio",
     "typecheck": "npm run typecheck -ws --if-present",
     "verify:architecture": "node scripts/verify-architecture.mjs",
     "test": "node scripts/smoke-test.mjs && node scripts/verify-architecture.mjs && node scripts/runtime-regression.mjs",
