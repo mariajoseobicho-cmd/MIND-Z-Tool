@@ -40,8 +40,10 @@ jobs:
           name: MIND-Z-Web-Preview
           path: apps/studio/dist
 
-      - name: Configure Pages
+      - name: Configure or enable Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
