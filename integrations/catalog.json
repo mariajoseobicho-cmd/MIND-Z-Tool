@@ -1,82 +1,18 @@
 {
   "schemaVersion": 1,
   "integrations": [
-    {
-      "id": "ollama",
-      "repo": "https://github.com/ollama/ollama.git",
-      "license": "MIT",
-      "mode": "external-process",
-      "capabilities": ["llm.local", "planning", "script", "vision.optional"]
-    },
-    {
-      "id": "comfyui",
-      "repo": "https://github.com/Comfy-Org/ComfyUI.git",
-      "license": "GPL-3.0",
-      "mode": "external-service",
-      "capabilities": ["image.generate", "image.edit", "video.generate", "video.inpaint", "video.extend"]
-    },
-    {
-      "id": "wan2.1",
-      "repo": "https://github.com/Wan-Video/Wan2.1.git",
-      "license": "Apache-2.0",
-      "mode": "model-engine",
-      "capabilities": ["video.text-to-video", "video.image-to-video", "video.edit"]
-    },
-    {
-      "id": "diffusers",
-      "repo": "https://github.com/huggingface/diffusers.git",
-      "license": "Apache-2.0",
-      "mode": "library",
-      "capabilities": ["image.generate", "image.edit", "video.generate"]
-    },
-    {
-      "id": "kokoro",
-      "repo": "https://github.com/hexgrad/kokoro.git",
-      "license": "Apache-2.0",
-      "mode": "external-service",
-      "capabilities": ["voice.tts", "voice.multilingual"]
-    },
-    {
-      "id": "whisper.cpp",
-      "repo": "https://github.com/ggml-org/whisper.cpp.git",
-      "license": "MIT",
-      "mode": "local-cli",
-      "capabilities": ["audio.transcribe", "captions.generate", "speech.timestamps"]
-    },
-    {
-      "id": "ffmpeg",
-      "repo": "https://github.com/FFmpeg/FFmpeg.git",
-      "license": "LGPL/GPL depending build",
-      "mode": "local-cli",
-      "capabilities": ["video.compose", "video.transcode", "audio.mix", "captions.burn"]
-    },
-    {
-      "id": "drift",
-      "repo": "https://github.com/CutWire-Studios/Drift.git",
-      "license": "GPL-3.0",
-      "mode": "external-mcp-editor",
-      "capabilities": ["edit.professional", "timeline", "effects", "transitions", "subtitles", "audio", "export"]
-    },
-    {
-      "id": "openshorts",
-      "repo": "https://github.com/mutonby/openshorts.git",
-      "license": "MIT",
-      "mode": "optional-worker",
-      "capabilities": ["video.clip", "captions", "dubbing", "social.publish"]
-    },
-    {
-      "id": "autoclip",
-      "repo": "https://github.com/artbyjazi/autoclip.git",
-      "license": "MIT",
-      "mode": "optional-worker",
-      "capabilities": ["video.highlights", "video.reframe", "captions"]
-    },
-    {
-      "id": "moneyprinterturbo",
-      "repo": "https://github.com/harry0703/MoneyPrinterTurbo.git",
-      "license": "MIT",
-      "mode": "optional-worker",
-      "capabilities": ["script", "media.search", "video.assemble"]
-    }
+    {"id":"ollama","repo":"https://github.com/ollama/ollama.git","license":"MIT","mode":"external-process","capabilities":["llm.local","planning","script","vision.optional"]},
+    {"id":"comfyui","repo":"https://github.com/Comfy-Org/ComfyUI.git","license":"GPL-3.0","mode":"external-service","capabilities":["image.generate","image.edit","video.generate","video.inpaint","video.extend"]},
+    {"id":"wan2.1","repo":"https://github.com/Wan-Video/Wan2.1.git","license":"Apache-2.0","mode":"model-engine","capabilities":["video.text-to-video","video.image-to-video","video.edit"]},
+    {"id":"diffusers","repo":"https://github.com/huggingface/diffusers.git","license":"Apache-2.0","mode":"library","capabilities":["image.generate","image.edit","video.generate"]},
+    {"id":"kokoro","repo":"https://github.com/hexgrad/kokoro.git","license":"Apache-2.0","mode":"external-service","capabilities":["voice.tts","voice.multilingual"]},
+    {"id":"whisper.cpp","repo":"https://github.com/ggml-org/whisper.cpp.git","license":"MIT","mode":"local-cli","capabilities":["audio.transcribe","captions.generate","speech.timestamps"]},
+    {"id":"yt-dlp","repo":"https://github.com/yt-dlp/yt-dlp.git","license":"Unlicense/public-domain dedication","mode":"local-cli","capabilities":["reference.youtube.ingest","media.download","metadata.extract"]},
+    {"id":"ffmpeg","repo":"https://github.com/FFmpeg/FFmpeg.git","license":"LGPL/GPL depending build","mode":"local-cli","capabilities":["video.compose","video.transcode","audio.mix","captions.burn"]},
+    {"id":"drift","repo":"https://github.com/CutWire-Studios/Drift.git","license":"GPL-3.0","mode":"external-mcp-editor","capabilities":["edit.professional","timeline","effects","transitions","subtitles","audio","export"]},
+    {"id":"openshorts","repo":"https://github.com/mutonby/openshorts.git","license":"MIT","mode":"optional-worker","capabilities":["video.clip","captions","dubbing","social.publish"]},
+    {"id":"autoclip","repo":"https://github.com/artbyjazi/autoclip.git","license":"MIT","mode":"optional-worker","capabilities":["video.highlights","video.reframe","captions","reference.youtube.ingest"]},
+    {"id":"moneyprinterturbo","repo":"https://github.com/harry0703/MoneyPrinterTurbo.git","license":"MIT","mode":"optional-worker","capabilities":["script","media.search","video.assemble"]},
+    {"id":"postiz","repo":"https://github.com/gitroomhq/postiz-app.git","license":"AGPL-3.0","mode":"external-api-or-mcp","capabilities":["publish.social","schedule.social","analytics.social"]}
   ]
 }

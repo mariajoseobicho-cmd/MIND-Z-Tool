@@ -1,0 +1,29 @@
+{
+  "id": "viral-launch-loop-v1",
+  "name": "MIND-Z Viral Launch Loop",
+  "version": "1.0.0",
+  "policy": {
+    "viralityIsNotGuaranteed": true,
+    "minimumCreativeScore": 78,
+    "minimumVariants": 3,
+    "humanApprovalBeforePublish": true,
+    "learnFromPostPublishMetrics": true
+  },
+  "stages": [
+    {"id":"concept","capability":"content.concept"},
+    {"id":"trend-context","capability":"trend.context"},
+    {"id":"variants","capability":"creative.variants"},
+    {"id":"hooks","capability":"creative.hooks"},
+    {"id":"thumbnail-pack","capability":"thumbnail.variants"},
+    {"id":"first-3-seconds","capability":"retention.first3s"},
+    {"id":"retention-map","capability":"retention.design"},
+    {"id":"produce","capability":"media.generate"},
+    {"id":"drift-polish","capability":"edit.professional","transport":"mcp"},
+    {"id":"preflight-score","capability":"virality.score"},
+    {"id":"regenerate-if-weak","capability":"creative.iterate"},
+    {"id":"human-approval","capability":"human.approval","approval":"human"},
+    {"id":"publish","capability":"publish.social"},
+    {"id":"collect-metrics","capability":"analytics.collect"},
+    {"id":"learn","capability":"creative.learn"}
+  ]
+}
