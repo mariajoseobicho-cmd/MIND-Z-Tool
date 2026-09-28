@@ -1,0 +1,31 @@
+{
+  "id": "reference-to-better-longform-v1",
+  "name": "Reference URL → Original Better Long-form",
+  "version": "1.0.0",
+  "policy": {
+    "referenceIsInspirationOnly": true,
+    "reuseSourceFootage": false,
+    "reuseSourceScript": false,
+    "independentFactCheck": true,
+    "humanScriptApproval": true,
+    "finalHumanApproval": true
+  },
+  "stages": [
+    {"id":"ingest","capability":"reference.youtube.ingest"},
+    {"id":"transcribe","capability":"audio.transcribe"},
+    {"id":"shot-analysis","capability":"video.analyze.shots"},
+    {"id":"structure-analysis","capability":"reference.analyze.structure"},
+    {"id":"originality-guard","capability":"reference.originality.guard"},
+    {"id":"research","capability":"research.web"},
+    {"id":"new-angle","capability":"content.strategy"},
+    {"id":"script","capability":"content.script","approval":"human"},
+    {"id":"storyboard","capability":"video.storyboard"},
+    {"id":"assets","capability":"media.generate"},
+    {"id":"narration","capability":"voice.tts"},
+    {"id":"rough-cut","capability":"video.compose"},
+    {"id":"drift-finishing","capability":"edit.professional","transport":"mcp"},
+    {"id":"qa-loop","capability":"video.qa.iterative"},
+    {"id":"final-approval","capability":"human.approval","approval":"human"},
+    {"id":"export","capability":"video.export"}
+  ]
+}

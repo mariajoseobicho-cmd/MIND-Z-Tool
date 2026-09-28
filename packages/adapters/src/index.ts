@@ -5,3 +5,4 @@ export * from "./http-media.js";
 export * from "./ollama.js";
 export * from "./comfyui.js";
 export * from "./drift-mcp.js";
+export * from "./youtube-reference.js";

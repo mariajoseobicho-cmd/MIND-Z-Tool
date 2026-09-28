@@ -1,0 +1,30 @@
+{
+  "id": "reference-to-shorts-factory-v1",
+  "name": "Reference URL → Original Shorts Factory",
+  "version": "1.0.0",
+  "policy": {
+    "referenceIsInspirationOnly": true,
+    "reuseSourceFootage": false,
+    "reuseSourceScript": false,
+    "defaultShortCount": 5,
+    "humanFinalApproval": true
+  },
+  "stages": [
+    {"id":"ingest","capability":"reference.youtube.ingest"},
+    {"id":"transcribe","capability":"audio.transcribe"},
+    {"id":"highlight-map","capability":"content.highlights"},
+    {"id":"retention-analysis","capability":"reference.analyze.retention"},
+    {"id":"short-concepts","capability":"shorts.concepts"},
+    {"id":"rewrite-original","capability":"shorts.script.original"},
+    {"id":"vertical-storyboards","capability":"shorts.storyboard"},
+    {"id":"generate-assets","capability":"media.generate"},
+    {"id":"narration","capability":"voice.tts"},
+    {"id":"reframe","capability":"video.reframe"},
+    {"id":"captions","capability":"captions.generate"},
+    {"id":"rough-cuts","capability":"video.compose.batch"},
+    {"id":"drift-finishing","capability":"edit.professional.batch","transport":"mcp"},
+    {"id":"quality-ranking","capability":"shorts.rank"},
+    {"id":"final-approval","capability":"human.approval","approval":"human"},
+    {"id":"export","capability":"video.export.batch"}
+  ]
+}
